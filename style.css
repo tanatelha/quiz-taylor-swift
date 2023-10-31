@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*incluir o preenchimento e a borda dentro da largura/altura total do elemento*/
+    text-decoration: none;
+}
+
+div.fundo{
+    width: 100%;
+    height: 100vh;
+    background-image: url("background-quiz.svg");
+    object-fit: cover;
+}
