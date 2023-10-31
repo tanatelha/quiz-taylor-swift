@@ -42,7 +42,9 @@ div.box-inicial{
     width: 500px;
     height: 250px;
     position: relative;
-    box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.7);
+
+    box-shadow: 0px 0px 20px rgb(162, 88, 224, 0.9);
+    /*rgba(255, 255, 255, 0.674);*/
 }
 
 p.titulo{
@@ -55,6 +57,8 @@ p.titulo{
 }
 
 button{
+    all: unset; /*para retirar configurações iniciais do botão*/
+    text-align: center;
     width: 20%;
     background-color: #A258E0;
     color: white;
@@ -62,4 +66,5 @@ button{
     border-radius: 1rem;
     font-size: 1.5rem;
     font-weight: 600;
+    
 }
