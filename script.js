@@ -30,7 +30,8 @@ botaoComecar.addEventListener('click', function() {
 
 
 //botão 'bora lá'
-let botaoBoraLa = document.querySelector(".botao-bora-la")
+let botaoBoraLa = document.querySelector(".botao-bora-la");
+let paginaInicial = document.querySelector(".fundo");
 
 botaoBoraLa.addEventListener("mouseover", function () {
   botaoBoraLa.style.cursor = "pointer";
@@ -39,4 +40,15 @@ botaoBoraLa.addEventListener("mouseover", function () {
 
 botaoBoraLa.addEventListener("mouseout", function () {
   botaoBoraLa.style.transform = "";
+});
+
+botaoBoraLa.addEventListener("click", function () {
+  //1: div 1 some
+  paginaInicial.style.opacity = "0";
+
+
+  //2: coloca no local uma div 2 composta por quadrado em branco, pergunta e respostas e botão de próxima
+
+
+  //3. quando a pessoa apertar na resposta. se certa: verde + aparece resposta. se errada, contorna vermelha + aparece resposta
 });
