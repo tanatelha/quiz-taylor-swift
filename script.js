@@ -1,5 +1,6 @@
 //botão 'começar'
 let botaoComecar = document.querySelector(".botao-comecar")
+let boxRegras = document.querySelector(".box-regras")
 
 botaoComecar.addEventListener("mouseover", function () {
     botaoComecar.style.cursor = "pointer";
@@ -23,4 +24,19 @@ botaoComecar.addEventListener('click', function() {
       }, 300); // 2000 milissegundos (2 segundos)
 
     // Fazer aparecer a div com as regras do jogo
+    boxRegras.style.top = "65%"
+    boxRegras.style.opacity = "1"
+});
+
+
+//botão 'bora lá'
+let botaoBoraLa = document.querySelector(".botao-bora-la")
+
+botaoBoraLa.addEventListener("mouseover", function () {
+  botaoBoraLa.style.cursor = "pointer";
+  botaoBoraLa.style.transform = "scale(1.03)";
+});
+
+botaoBoraLa.addEventListener("mouseout", function () {
+  botaoBoraLa.style.transform = "";
 });
