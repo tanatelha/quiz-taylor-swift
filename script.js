@@ -43,14 +43,44 @@ botaoBoraLa.addEventListener("mouseout", function () {
   botaoBoraLa.style.transform = "";
 });
 
-botaoBoraLa.addEventListener("click", function () {
-  //div inicial some
-  paginaInicial.style.opacity = "0";
+
+// função para gerar as perguntas do quiz
+async function iniciar() {
+  const dados = await d3.csv("perguntas-quiz.csv")
+
+  // Fazer o sorteio das perguntas
+  const numLinhas = dados.length; // calcula o tamanho de linhas da base de dados
+
+  const linhasSorteadas = new Set(); // o Set()  representa uma coleção de valores únicos e não duplicados.No código, 'linhasSorteadas' é usado para rastrear os índices das linhas sorteadas de forma aleatória a partir dos dados do CSV.
   
+  const numLinhasASortear = 5;
 
-  // Adiciona o conteúdo de pergunta
+  // Enquanto a quantidade de linhas selecionadas for menor que o número a sortear...
+  while (linhasSorteadas.size < numLinhasASortear) {
+    const indiceAleatorio = Math.floor(Math.random() * (numLinhas - 1)) + 1; /// Ignora o cabeçalho
+    // O resultado final de indiceAleatorio é um número inteiro aleatório que pode ser usado para acessar uma linha específica nos dados do CSV, excluindo o cabeçalho.
 
-  // Adiciona o conteúdo dos botões de resposta
+    // O operador ! significa o contrário da conição. Assim, essa linha busca identificar se o Set linhasSorteadas não contém o indiceAleatorio
+    if (!linhasSorteadas.has(indiceAleatorio)) {
+      linhasSorteadas.add(indiceAleatorio);
+    }
+  }
+
+  // Agora, você pode acessar as linhas sorteadas pelos índices
+  for (const indice of linhasSorteadas) {
+    const linhaSorteada = dados[indice];
+    console
+    // Faça o que você precisa com essas linhas aqui.
+  }  
+}
+
+
+botaoBoraLa.addEventListener("click", function () {
+  // div inicial some
+  paginaInicial.style.opacity = "0";
+
+  // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
+  iniciar()
 
   // Deixa a box visível
   boxPergunta.style.opacity = "1";
