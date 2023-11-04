@@ -28,6 +28,7 @@ div.fundo{
     object-fit: cover;
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -39,19 +40,49 @@ div.box-inicial{
     align-items: center;
     background-color: white;
     border-radius: 2.0rem;
-    width: 500px;
-    height: 250px;
-    position: relative;
-    box-shadow: 0px 0px 20px rgb(162, 88, 224, 0.9);
+    width: 450px;
+    height: 200px;
+    margin: auto;
+    box-shadow: 0px 0px 20px #a258e0e6;
+}
+
+div.box-regras{
+    top: 65%;
+    left: auto;
+    background-color: white;
+    border-radius: 1.0rem;
+    width: 400px;
+    height: 210px;
+    position: absolute;
+    box-shadow: 0px 0px 10px rgb(239, 193, 128);
 }
 
 p.titulo{
     font-size: 2.5rem;
     font-weight: 600;
-    padding: 1.0rem;
-    margin: 1rem 2rem 2rem 2rem;
+    padding: 0.5rem;
+    margin: 1rem 2rem 1.5rem 2rem;
     text-align: center;
     line-height: 3.5rem;
+}
+
+p.intertitulo{
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 1rem 1rem 1rem 1rem;
+    text-align: center;
+    line-height: 2rem;
+}
+
+p.texto{
+    font-size: 1.2rem;
+    line-height: 2rem;
+    margin: 1rem 2rem 1rem 2rem;
+}
+
+span.negrito{
+    font-weight: 600;
+    border-bottom: 3px solid #a258e0e6;
 }
 
 button{
@@ -71,4 +102,21 @@ button.botao-comecar{
     box-shadow: 0px 0px 10px rgb(162, 88, 224, 0.9);
     transition: transform 0.6s;
     transform: "";
+}
+
+button.botao-bora-la{
+    background-color: #EFC180;
+    color: black;
+    padding: 1.3rem;
+    font-size: 1.2rem;
+    box-shadow: 0px 0px 10px rgb(239, 193, 128);
+    transition: transform 0.6s;
+    transform: "";
+    margin: 1rem;
+}
+
+.conteiner-botao{
+    text-align: left;
+    display: flex;
+    justify-content: end;
 }

@@ -21,4 +21,6 @@ botaoComecar.addEventListener('click', function() {
     setTimeout(function () {
         botaoComecar.style.transform = transformacaoOriginal;
       }, 300); // 2000 milissegundos (2 segundos)
+
+    // Fazer aparecer a div com as regras do jogo
 });
