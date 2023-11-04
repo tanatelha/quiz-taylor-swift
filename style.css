@@ -25,11 +25,43 @@ html{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+/*Configurações de texto*/
+p.titulo{
+    font-size: 2.5rem;
+    font-weight: 600;
+    padding: 0.5rem;
+    margin: 1rem 2rem 1.5rem 2rem;
+    text-align: center;
+    line-height: 3.5rem;
+}
+
+p.intertitulo{
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 1rem 1rem 1rem 1rem;
+    text-align: center;
+    line-height: 2rem;
+}
+
+p.texto{
+    font-size: 1.2rem;
+    line-height: 2rem;
+    margin: 1rem 2rem 1rem 2rem;
+}
+
+span.negrito{
+    font-weight: 600;
+    border-bottom: 3px solid #a258e0e6;
+}
+
+
+
 section.pagina-principal{
     width: 100%;
     height: 100vh;
     background-image: url("background-quiz.svg");
     object-fit: cover;
+    position: relative;
 }
 
 div.fundo{
@@ -65,7 +97,7 @@ div.box-inicial{
     height: 200px;
     margin: 25rem auto;
     box-shadow: 0px 0px 20px #a258e0e6;
-    z-index: 7;
+    z-index: 2;
 }
 
 div.box-regras{
@@ -79,34 +111,6 @@ div.box-regras{
     box-shadow: 0px 0px 10px rgb(239, 193, 128);
     transition: 0.6s ease;
     opacity: 0;
-}
-
-p.titulo{
-    font-size: 2.5rem;
-    font-weight: 600;
-    padding: 0.5rem;
-    margin: 1rem 2rem 1.5rem 2rem;
-    text-align: center;
-    line-height: 3.5rem;
-}
-
-p.intertitulo{
-    font-size: 1.4rem;
-    font-weight: 600;
-    margin: 1rem 1rem 1rem 1rem;
-    text-align: center;
-    line-height: 2rem;
-}
-
-p.texto{
-    font-size: 1.2rem;
-    line-height: 2rem;
-    margin: 1rem 2rem 1rem 2rem;
-}
-
-span.negrito{
-    font-weight: 600;
-    border-bottom: 3px solid #a258e0e6;
 }
 
 button{
@@ -134,7 +138,7 @@ button.botao-bora-la{
     padding: 1.3rem;
     font-size: 1.2rem;
     box-shadow: 0px 0px 10px rgb(239, 193, 128);
-    transition: transform 0.6s;
+    transition: 0.6s ease;
     transform: "";
     margin: 1rem;
 }
@@ -143,6 +147,40 @@ button.botao-bora-la{
     text-align: left;
     display: flex;
     justify-content: end;
+}
+
+
+div.box-pergunta{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 2.0rem;
+    width: 500px;
+    height: 350px;
+    box-shadow: 0px 0px 20px #EFC180;
+    z-index: 99;
+    margin: -55rem auto;
+    /*position: absolute;*/
+    opacity: 0;
+    transition: 0.6s ease;
+}
+
+p.titulo-pergunta{
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 0rem 2rem 3rem 2rem;
+    text-align: center;
+    line-height: 2.5rem;
+}
+
+
+button.resposta{
+    background-color: #EFC180;
+    color: black;
+    padding: 1rem;
+    font-size: 1.2rem;
+    margin: 1rem 5rem 1rem 5rem;
 }
 
 
