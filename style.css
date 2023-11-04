@@ -57,16 +57,18 @@ p.titulo{
 button{
     all: unset; /*para retirar configurações iniciais do botão*/
     text-align: center;
+    border-radius: 1rem;
+    font-weight: 600;
+    cursor: auto;
+}
+
+button.botao-comecar{
     width: 20%;
     background-color: #A258E0;
     color: white;
     padding: 1.3rem;
-    border-radius: 1rem;
     font-size: 1.5rem;
-    font-weight: 600;
-    cursor: auto;
     box-shadow: 0px 0px 10px rgb(162, 88, 224, 0.9);
     transition: transform 0.6s;
     transform: "";
-    /*box-shadow: 3px 3px 0px rgba(0, 0, 0, 1);*/
 }
