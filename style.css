@@ -15,6 +15,10 @@
     --cor-rosa: #F241A3;
   }
 
+  body, html {
+    overflow: hidden;
+}
+
 html{
     /*a cada 1 rem, será considerado 10px*/
     font-size: 62.5%;
@@ -157,7 +161,7 @@ button.botao-bora-la{
     img.imagem{
         width: 230px; /* Defina a largura desejada em pixels */
         height: auto; /* A altura será dimensionada automaticamente para manter a proporção */
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
     
     div.box-regras{
