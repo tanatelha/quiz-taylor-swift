@@ -31,6 +31,21 @@ div.fundo{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+}
+
+div.imagem-principal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    position: absolute;
+    top: 10%;
+}
+
+img.imagem{
+    width: 400px; /* Defina a largura desejada em pixels */
+    height: auto; /* A altura será dimensionada automaticamente para manter a proporção */
 }
 
 div.box-inicial{
@@ -42,12 +57,13 @@ div.box-inicial{
     border-radius: 2.0rem;
     width: 450px;
     height: 200px;
-    margin: auto;
     box-shadow: 0px 0px 20px #a258e0e6;
+    z-index: 7;
+    position: absolute;
 }
 
 div.box-regras{
-    top: 65%;
+    top: 40%;
     left: auto;
     background-color: white;
     border-radius: 1.0rem;
@@ -55,6 +71,8 @@ div.box-regras{
     height: 210px;
     position: absolute;
     box-shadow: 0px 0px 10px rgb(239, 193, 128);
+    transition: 0.6s ease;
+    opacity: 0;
 }
 
 p.titulo{
@@ -120,3 +138,69 @@ button.botao-bora-la{
     display: flex;
     justify-content: end;
 }
+
+
+/*Responsividade para quando a largura da tela for igual ou menor que 900px*/
+@media (max-width: 900px) {
+    div.fundo{
+        background-size: contain; /*controla como a imagem de fundo é dimensionada em relação ao elemento que a contém*/
+    }
+  }
+
+@media (max-width: 400px) {
+    div.box-inicial{
+        width: 250px;
+        height: 150px;
+        top: 30%;
+    }
+
+    img.imagem{
+        width: 230px; /* Defina a largura desejada em pixels */
+        height: auto; /* A altura será dimensionada automaticamente para manter a proporção */
+        margin-top: 2rem;
+    }
+    
+    div.box-regras{
+        width: 200px;
+        height: 250px;
+        transition: 0.6s ease;
+        opacity: 0;
+        margin-top: -10rem;
+    }
+
+    p.titulo{
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        margin-bottom: 0.5rem;
+        margin-top: 0rem;
+    }
+    
+    p.intertitulo{
+        font-size: 1.2rem;
+        margin: 1rem 1rem 1rem 1rem;
+        line-height: 2rem;
+    }
+    
+    p.texto{
+        font-size: 1.0rem;
+        line-height: 2rem;
+        margin: 1rem 2rem 1rem 2rem;
+    }
+    
+    span.negrito{
+        border-bottom: 2px solid #a258e0e6;
+    }
+
+    button.botao-comecar{  
+        padding: 1.0rem;
+        font-size: 1.0rem;
+    }
+    
+    button.botao-bora-la{
+        font-size: 1.5rem;
+        color: white;
+    }
+    
+
+
+  }  
