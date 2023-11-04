@@ -3,8 +3,12 @@ let botaoComecar = document.querySelector(".botao-comecar")
 
 botaoComecar.addEventListener("mouseover", function () {
     botaoComecar.style.cursor = "pointer";
-    botaoComecar.style.transform = "scale(1.03)";
+    botaoComecar.style.transform = "scale(1.05)";
   });
+
+botaoComecar.addEventListener("mouseout", function () {
+  botaoComecar.style.transform = "";
+});
 
 botaoComecar.addEventListener('click', function() {
     // obtém a posição original do botão
