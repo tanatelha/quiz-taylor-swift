@@ -44,8 +44,8 @@ botaoBoraLa.addEventListener("mouseout", function () {
 });
 
 
-// função para gerar as perguntas do quiz
-async function iniciar() {
+// função para sortear as linhas do quiz
+async function sorteioPerguntas() {
   const dados = await d3.csv("perguntas-quiz.csv")
 
   // Fazer o sorteio das perguntas
@@ -62,16 +62,11 @@ async function iniciar() {
 
     // O operador ! significa o contrário da conição. Assim, essa linha busca identificar se o Set linhasSorteadas não contém o indiceAleatorio
     if (!linhasSorteadas.has(indiceAleatorio)) {
+
+      // se o indiceAleatorio não estiver no set linhasSorteadas, ele é adicionado
       linhasSorteadas.add(indiceAleatorio);
     }
   }
-
-  // Agora, você pode acessar as linhas sorteadas pelos índices
-  for (const indice of linhasSorteadas) {
-    const linhaSorteada = dados[indice];
-    console
-    // Faça o que você precisa com essas linhas aqui.
-  }  
 }
 
 
@@ -80,7 +75,7 @@ botaoBoraLa.addEventListener("click", function () {
   paginaInicial.style.opacity = "0";
 
   // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
-  iniciar()
+  sorteioPerguntas()
 
   // Deixa a box visível
   boxPergunta.style.opacity = "1";
@@ -89,3 +84,12 @@ botaoBoraLa.addEventListener("click", function () {
 
   //3. quando a pessoa apertar na resposta. se certa: verde + aparece resposta. se errada, contorna vermelha + aparece resposta
 });
+
+
+
+// // Agora, você pode acessar as linhas sorteadas pelos índices
+  for (const indice of linhasSorteadas) {
+    const linhaSorteada = dados[indice];
+    console.log(indice)
+    // Faça o que você precisa com essas linhas aqui.
+  }  
