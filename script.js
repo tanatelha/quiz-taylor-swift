@@ -1,6 +1,13 @@
 // Array para armazenar os dados do sorteio
 let dadosArmazenados = [];
 
+// Nomear as variáveis gerais
+let pergunta = document.querySelector(".titulo-pergunta")
+let opcao1 = document.querySelector("#opcao-1")
+let opcao2 = document.querySelector("#opcao-2")
+let opcao3 = document.querySelector("#opcao-3")
+let resultado = document.querySelector(".resultado")
+let justificativa = document.querySelector(".texto-justificativa")
 
 
 // ----------- função para sortear as linhas do quiz quando a página carrega
@@ -68,6 +75,7 @@ async function sorteioPerguntas() {
 let botaoComecar = document.querySelector(".botao-comecar")
 let boxRegras = document.querySelector(".box-regras")
 
+
 botaoComecar.addEventListener("mouseover", function () {
     botaoComecar.style.cursor = "pointer";
     botaoComecar.style.transform = "scale(1.05)";
@@ -79,12 +87,12 @@ botaoComecar.addEventListener("mouseout", function () {
 
 botaoComecar.addEventListener('click', function() {
     // obtém a posição original do botão
-    let transformacaoOriginal = window.getComputedStyle(botaoComecar).transform; // Obtém a transformação original
+    let transformacaoOriginal = window.getComputedStyle(botaoComecar).transform;
 
     // movimenta o botão para baixo quando ele for apertado
     botaoComecar.style.transform = "translateY(5px)";
 
-    // agenda uma função que reverterá as mudanças (pra baixo) depois desse intervalo de tempo
+    // agenda uma função que reverterá a mudança (pra baixo) depois desse intervalo de tempo e fazer o botão voltar para a posição original
     setTimeout(function () {
         botaoComecar.style.transform = transformacaoOriginal;
       }, 300); // 2000 milissegundos (2 segundos)
@@ -101,10 +109,11 @@ botaoComecar.addEventListener('click', function() {
 
 
 
-//botão 'bora lá'
+//----------- Funcionalidades do botão 'bora lá'
 let botaoBoraLa = document.querySelector(".botao-bora-la");
 let paginaInicial = document.querySelector(".fundo");
 let boxPergunta = document.querySelector(".box-pergunta");
+let boxJustificativa = document.querySelector(".box-justificativa")
 
 botaoBoraLa.addEventListener("mouseover", function () {
   botaoBoraLa.style.cursor = "pointer";
@@ -116,14 +125,25 @@ botaoBoraLa.addEventListener("mouseout", function () {
 });
 
 botaoBoraLa.addEventListener("click", function () {
-  // div inicial some
+  // Div inicial com foto e nome do jogo somem
   paginaInicial.style.opacity = "0";
-
-  // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
-  
 
   // Deixa a box visível
   boxPergunta.style.opacity = "1";
+  boxJustificativa.style.opacity = "1";
+
+  // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
+  const primeiraPergunta = dadosArmazenados[0]
+  pergunta.innerHTML = primeiraPergunta.pergunta
+  opcao1.innerHTML = primeiraPergunta.opcao_1
+  opcao2.innerHTML = primeiraPergunta.opcao_2
+  opcao3.innerHTML = primeiraPergunta.opcao_3
+  justificativa.innerHTML = primeiraPergunta.justificativa
+
+  // let respostaCerta = primeiraPergunta.resposta_certa
+
+
+  //resultado.innerHTML = primeiraPergunta.pergunta colocar 'vc errou, vc faz isso'...
 
   // Torna o botãoBoraLa invisível em vez de removê-lo do DOM
   botaoBoraLa.style.display = "none";
