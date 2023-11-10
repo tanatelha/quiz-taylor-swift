@@ -63,6 +63,7 @@ section.pagina-principal{
     background-image: url("background-quiz.svg");
     object-fit: cover;
     position: relative;
+    z-index: 0;
 }
 
 div.fundo{
@@ -71,6 +72,7 @@ div.fundo{
     justify-content: center;
     align-items: center;
     transition: 0.6s ease;
+    z-index: 1;
 }
 
 div.imagem-principal{
@@ -162,33 +164,41 @@ div.pergunta {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 2;
 }
 
 div.box-pergunta{
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-color: white;
     border-radius: 2.0rem;
     width: 500px;
     height: 350px;
+    margin: auto; /*mudo para -20rem auto 0rem auto no js*/
     box-shadow: 0px 0px 20px #EFC180;
+    z-index: 12;
+    transition: 0.8s ease;
     opacity: 0;
-    transition: 0.6s ease;
 }
 
-div.justificativa{
+div.box-justificativa{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    top: 10%; /*mudo para 110% no js*/
+    left: auto;
     background-color: white;
-    border-radius: 2.0rem;
-    width: 350px;
-    height: 250px;
+    border-radius: 1.0rem;
+    width: 400px;
+    height: 210px;
+    position: absolute;
     box-shadow: 0px 0px 20px #EFC180;
     transition: 0.6s ease;
-    margin: 2rem;
     opacity: 0;
+    z-index: 10; /*VER DE MUDAR ISSO NO JS*/
+    transition: 0.6s ease;
 }
 
 button.botao-proxima {
@@ -214,7 +224,7 @@ p.titulo-pergunta{
 button.resposta{
     background-color: #EFC180;
     color: black;
-    padding: 1rem;
+    padding: 1rem 3rem;
     font-size: 1.2rem;
     margin: 1rem 5rem 1rem 5rem;
 }
@@ -234,6 +244,12 @@ p.resultado{
     text-align: center;
     line-height: 2rem;
 }
+
+
+
+
+
+
 /*Responsividade para quando a largura da tela for igual ou menor que 900px*/
 @media (max-width: 900px) {
     div.fundo{
