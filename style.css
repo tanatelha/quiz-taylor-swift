@@ -183,12 +183,12 @@ div.justificativa{
     background-color: white;
     border-radius: 2.0rem;
     width: 350px;
-    height: 200px;
+    height: 250px;
     box-shadow: 0px 0px 20px #EFC180;
     z-index: 99;
     transition: 0.6s ease;
     margin: 2rem;
-    opacity: 0;
+    opacity: 1;
 }
 
 button.botao-proxima {
@@ -199,6 +199,7 @@ button.botao-proxima {
     box-shadow: 0px 0px 10px rgb(239, 193, 128);
     transition: 0.6s ease;
     transform: "";
+    margin: auto;
 }
 
 p.titulo-pergunta{
@@ -221,7 +222,15 @@ button.resposta{
 p.texto-justificativa{
     font-size: 1.4rem;
     font-weight: 500;
-    margin: 4rem 2rem 2rem 2rem;
+    margin: 1rem 2rem 2rem 2rem;
+    text-align: center;
+    line-height: 2rem;
+}
+
+p.resultado{
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 2rem 1rem 1rem 1rem;
     text-align: center;
     line-height: 2rem;
 }
