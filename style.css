@@ -132,7 +132,7 @@ button.botao-comecar{
     padding: 1.3rem;
     font-size: 1.5rem;
     box-shadow: 0px 0px 10px rgb(162, 88, 224, 0.9);
-    transition: transform 0.6s;
+    transition: 0.6s ease;
     transform: "";
 }
 
@@ -198,7 +198,7 @@ div.box-justificativa{
     transition: 0.6s ease;
     opacity: 0;
     z-index: 10; /*VER DE MUDAR ISSO NO JS*/
-    transition: 0.6s ease;
+    transition: 0.8s ease;
 }
 
 button.botao-proxima {
@@ -220,13 +220,14 @@ p.titulo-pergunta{
     line-height: 2.5rem;
 }
 
-
 button.resposta{
     background-color: #EFC180;
     color: black;
     padding: 1rem 3rem;
     font-size: 1.2rem;
     margin: 1rem 5rem 1rem 5rem;
+    transition: 0.6s ease;
+    transform: "";
 }
 
 p.texto-justificativa{
