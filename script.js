@@ -56,7 +56,7 @@ async function sorteioPerguntas() {
 // Chamar a função para rodar os trem tudo
 (async () => {
   await sorteioPerguntas();
-  console.log(dadosArmazenados); // Verifique se o array foi preenchido corretamente
+  console.log(dadosArmazenados); // Verifique se o array foi preenchido corretamente. dadosArmazenados é um array de objetos
 })();
 
 
