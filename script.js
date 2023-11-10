@@ -46,12 +46,14 @@ botaoBoraLa.addEventListener("mouseout", function () {
 
 // função para sortear as linhas do quiz
 async function sorteioPerguntas() {
+
+  // subir os dados em d3
   const dados = await d3.csv("perguntas-quiz.csv")
 
   // Fazer o sorteio das perguntas
-  const numLinhas = dados.length; // calcula o tamanho de linhas da base de dados
+  const numLinhas = dados.length; // calcula a quantidade de linhas da base de dados
 
-  const linhasSorteadas = new Set(); // o Set()  representa uma coleção de valores únicos e não duplicados.No código, 'linhasSorteadas' é usado para rastrear os índices das linhas sorteadas de forma aleatória a partir dos dados do CSV.
+  const linhasSorteadas = new Set(); // o Set()  representa uma coleção de valores únicos e não duplicados. No código, 'linhasSorteadas' é usado para rastrear os índices das linhas sorteadas de forma aleatória a partir dos dados do CSV.
   
   const numLinhasASortear = 5;
 
@@ -60,13 +62,21 @@ async function sorteioPerguntas() {
     const indiceAleatorio = Math.floor(Math.random() * (numLinhas - 1)) + 1; /// Ignora o cabeçalho
     // O resultado final de indiceAleatorio é um número inteiro aleatório que pode ser usado para acessar uma linha específica nos dados do CSV, excluindo o cabeçalho.
 
-    // O operador ! significa o contrário da conição. Assim, essa linha busca identificar se o Set linhasSorteadas não contém o indiceAleatorio
+    // O operador ! significa o contrário da condição. Assim, essa linha busca identificar se o Set linhasSorteadas não contém o indiceAleatorio
     if (!linhasSorteadas.has(indiceAleatorio)) {
 
       // se o indiceAleatorio não estiver no set linhasSorteadas, ele é adicionado
       linhasSorteadas.add(indiceAleatorio);
     }
   }
+
+  // // Acessar as linhas sorteadas pelos índices
+  for (const indice of linhasSorteadas) {
+    const linhaSorteada = dados[indice];
+    console.log(indice)
+    // Faça o que você precisa com essas linhas aqui.
+
+  };
 }
 
 
@@ -84,12 +94,3 @@ botaoBoraLa.addEventListener("click", function () {
 
   //3. quando a pessoa apertar na resposta. se certa: verde + aparece resposta. se errada, contorna vermelha + aparece resposta
 });
-
-
-
-// // Agora, você pode acessar as linhas sorteadas pelos índices
-  for (const indice of linhasSorteadas) {
-    const linhaSorteada = dados[indice];
-    console.log(indice)
-    // Faça o que você precisa com essas linhas aqui.
-  }  
