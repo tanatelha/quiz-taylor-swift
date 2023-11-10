@@ -73,9 +73,11 @@ async function sorteioPerguntas() {
   // // Acessar as linhas sorteadas pelos índices
   for (const indice of linhasSorteadas) {
     const linhaSorteada = dados[indice];
-    console.log(indice)
-    // Faça o que você precisa com essas linhas aqui.
+    let pergunta = linhaSorteada['pergunta']
+    console.log(linhaSorteada)
 
+    // Faça o que você precisa com essas linhas aqui.
+    
   };
 }
 
