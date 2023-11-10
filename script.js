@@ -1,4 +1,68 @@
-//botão 'começar'
+// Array para armazenar os dados
+let dadosArmazenados = [];
+
+
+
+// ----------- função para sortear as linhas do quiz
+async function sorteioPerguntas() {
+
+  // subir os dados em d3
+  const dados = await d3.csv("perguntas-quiz.csv")
+
+  // Fazer o sorteio das perguntas
+  const numLinhas = dados.length; // calcula a quantidade de linhas da base de dados
+
+  const linhasSorteadas = new Set(); // o Set()  representa uma coleção de valores únicos e não duplicados. No código, 'linhasSorteadas' é usado para rastrear os índices das linhas sorteadas de forma aleatória a partir dos dados do CSV.
+  
+  const numLinhasASortear = 5;
+
+  // Enquanto a quantidade de linhas selecionadas for menor que o número a sortear...
+  while (linhasSorteadas.size < numLinhasASortear) {
+    const indiceAleatorio = Math.floor(Math.random() * (numLinhas - 1)) + 1; /// Ignora o cabeçalho
+    // O resultado final de indiceAleatorio é um número inteiro aleatório que pode ser usado para acessar uma linha específica nos dados do CSV, excluindo o cabeçalho.
+
+    // O operador ! significa o contrário da condição. Assim, essa linha busca identificar se o Set linhasSorteadas não contém o indiceAleatorio
+    if (!linhasSorteadas.has(indiceAleatorio)) {
+ 
+      // se o indiceAleatorio não estiver no set linhasSorteadas, ele é adicionado
+      linhasSorteadas.add(indiceAleatorio);
+    }
+  }
+
+
+  // Acessar as linhas sorteadas pelos índice
+  for (const indice of linhasSorteadas) {
+      const linhaSorteada = dados[indice];
+      let pergunta = linhaSorteada['pergunta'];
+      let opcao_1 = linhaSorteada['opcao_1'];
+      let opcao_2 = linhaSorteada['opcao_2'];
+      let opcao_3 = linhaSorteada['opcao_3'];
+      let resposta_certa = linhaSorteada['resposta_certa'];
+      let justificativa = linhaSorteada['justificativa'];
+
+      // Adiciona os dados ao array
+      dadosArmazenados.push({
+          indice,
+          pergunta,
+          opcao_1,
+          opcao_2,
+          opcao_3,
+          resposta_certa,
+          justificativa
+    });
+  };
+};
+
+// Chamar a função para rodar os trem tudo
+(async () => {
+  await sorteioPerguntas();
+  console.log(dadosArmazenados); // Verifique se o array foi preenchido corretamente
+})();
+
+
+console.log(dadosArmazenados[0])
+
+// ----------- Funcionalidades do botão 'começar'
 let botaoComecar = document.querySelector(".botao-comecar")
 let boxRegras = document.querySelector(".box-regras")
 
@@ -24,9 +88,15 @@ botaoComecar.addEventListener('click', function() {
       }, 300); // 2000 milissegundos (2 segundos)
 
     // Fazer aparecer a div com as regras do jogo
-    boxRegras.style.top = "65%"
-    boxRegras.style.opacity = "1"
+    boxRegras.style.top = "65%";
+    boxRegras.style.opacity = "1";
+
 });
+
+
+
+
+
 
 
 //botão 'bora lá'
@@ -44,42 +114,7 @@ botaoBoraLa.addEventListener("mouseout", function () {
 });
 
 
-// função para sortear as linhas do quiz
-async function sorteioPerguntas() {
 
-  // subir os dados em d3
-  const dados = await d3.csv("perguntas-quiz.csv")
-
-  // Fazer o sorteio das perguntas
-  const numLinhas = dados.length; // calcula a quantidade de linhas da base de dados
-
-  const linhasSorteadas = new Set(); // o Set()  representa uma coleção de valores únicos e não duplicados. No código, 'linhasSorteadas' é usado para rastrear os índices das linhas sorteadas de forma aleatória a partir dos dados do CSV.
-  
-  const numLinhasASortear = 5;
-
-  // Enquanto a quantidade de linhas selecionadas for menor que o número a sortear...
-  while (linhasSorteadas.size < numLinhasASortear) {
-    const indiceAleatorio = Math.floor(Math.random() * (numLinhas - 1)) + 1; /// Ignora o cabeçalho
-    // O resultado final de indiceAleatorio é um número inteiro aleatório que pode ser usado para acessar uma linha específica nos dados do CSV, excluindo o cabeçalho.
-
-    // O operador ! significa o contrário da condição. Assim, essa linha busca identificar se o Set linhasSorteadas não contém o indiceAleatorio
-    if (!linhasSorteadas.has(indiceAleatorio)) {
-
-      // se o indiceAleatorio não estiver no set linhasSorteadas, ele é adicionado
-      linhasSorteadas.add(indiceAleatorio);
-    }
-  }
-
-  // // Acessar as linhas sorteadas pelos índices
-  for (const indice of linhasSorteadas) {
-    const linhaSorteada = dados[indice];
-    let pergunta = linhaSorteada['pergunta']
-    console.log(linhaSorteada)
-
-    // Faça o que você precisa com essas linhas aqui.
-    
-  };
-}
 
 
 botaoBoraLa.addEventListener("click", function () {
@@ -87,7 +122,7 @@ botaoBoraLa.addEventListener("click", function () {
   paginaInicial.style.opacity = "0";
 
   // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
-  sorteioPerguntas()
+  
 
   // Deixa a box visível
   boxPergunta.style.opacity = "1";
@@ -96,3 +131,15 @@ botaoBoraLa.addEventListener("click", function () {
 
   //3. quando a pessoa apertar na resposta. se certa: verde + aparece resposta. se errada, contorna vermelha + aparece resposta
 });
+
+
+
+
+
+
+// Acessar as linhas sorteadas pelos índices
+//for (const indice of linhasSorteadasForaDaFuncao) {
+  //const linhaSorteada = dados[indice];
+  //let pergunta = linhaSorteada['pergunta']
+  //console.log(linhaSorteada);
+//}
