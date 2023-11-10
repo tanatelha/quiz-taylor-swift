@@ -17,6 +17,7 @@
 
   body, html {
     overflow: hidden;
+    position: relative;
 }
 
 html{
@@ -112,7 +113,7 @@ div.box-regras{
     transition: 0.6s ease;
     opacity: 0;
 }
-
+   
 button{
     all: unset; /*para retirar configurações iniciais do botão*/
     text-align: center;
@@ -149,6 +150,16 @@ button.botao-bora-la{
     justify-content: end;
 }
 
+div.pergunta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 div.box-pergunta{
     display: flex;
@@ -160,11 +171,24 @@ div.box-pergunta{
     height: 350px;
     box-shadow: 0px 0px 20px #EFC180;
     z-index: 99;
-    margin: -55rem auto;
-    /*position: absolute;*/
     opacity: 0;
     transition: 0.6s ease;
 }
+
+div.justificativa{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 2.0rem;
+    width: 300px;
+    height: 200px;
+    box-shadow: 0px 0px 20px #EFC180;
+    z-index: 99;
+    transition: 0.6s ease;
+}
+
+
 
 p.titulo-pergunta{
     font-size: 1.6rem;
