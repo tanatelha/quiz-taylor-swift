@@ -1,9 +1,9 @@
-// Array para armazenar os dados
+// Array para armazenar os dados do sorteio
 let dadosArmazenados = [];
 
 
 
-// ----------- função para sortear as linhas do quiz
+// ----------- função para sortear as linhas do quiz quando a página carrega
 async function sorteioPerguntas() {
 
   // subir os dados em d3
@@ -40,7 +40,7 @@ async function sorteioPerguntas() {
       let resposta_certa = linhaSorteada['resposta_certa'];
       let justificativa = linhaSorteada['justificativa'];
 
-      // Adiciona os dados ao array
+      // Adiciona os dados ao array fora da função
       dadosArmazenados.push({
           indice,
           pergunta,
@@ -53,14 +53,16 @@ async function sorteioPerguntas() {
   };
 };
 
-// Chamar a função para rodar os trem tudo
+
+
+// ----------- Chamar a função para rodar os trem tudo
 (async () => {
   await sorteioPerguntas();
-  console.log(dadosArmazenados); // Verifique se o array foi preenchido corretamente. dadosArmazenados é um array de objetos
+  console.log(dadosArmazenados); // Console para verificar se o array foi preenchido corretamente. dadosArmazenados é um array de objetos
 })();
 
 
-console.log(dadosArmazenados[0])
+
 
 // ----------- Funcionalidades do botão 'começar'
 let botaoComecar = document.querySelector(".botao-comecar")
@@ -113,10 +115,6 @@ botaoBoraLa.addEventListener("mouseout", function () {
   botaoBoraLa.style.transform = "";
 });
 
-
-
-
-
 botaoBoraLa.addEventListener("click", function () {
   // div inicial some
   paginaInicial.style.opacity = "0";
@@ -126,8 +124,10 @@ botaoBoraLa.addEventListener("click", function () {
 
   // Deixa a box visível
   boxPergunta.style.opacity = "1";
-  botaoBoraLa.remove()
-  botaoComecar.remove()
+
+  // Torna o botãoBoraLa invisível em vez de removê-lo do DOM
+  botaoBoraLa.style.display = "none";
+  botaoComecar.style.display = "none";
 
   //3. quando a pessoa apertar na resposta. se certa: verde + aparece resposta. se errada, contorna vermelha + aparece resposta
 });
