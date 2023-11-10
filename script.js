@@ -9,6 +9,13 @@ let opcao3 = document.querySelector("#opcao-3")
 let resultado = document.querySelector(".resultado")
 let justificativa = document.querySelector(".texto-justificativa")
 
+// ----------- Definindo as perguntas em variáveis
+
+const segundaPergunta = dadosArmazenados[1]
+const terceiraPergunta = dadosArmazenados[2]
+const quartaPergunta = dadosArmazenados[3]
+const quintaPergunta = dadosArmazenados[4]
+
 
 // ----------- função para sortear as linhas do quiz quando a página carrega
 async function sorteioPerguntas() {
@@ -140,21 +147,57 @@ botaoBoraLa.addEventListener("click", function () {
   opcao3.innerHTML = primeiraPergunta.opcao_3
   justificativa.innerHTML = primeiraPergunta.justificativa
 
-  // let respostaCerta = primeiraPergunta.resposta_certa
-
-
-  //resultado.innerHTML = primeiraPergunta.pergunta colocar 'vc errou, vc faz isso'...
-
   // Torna o botãoBoraLa invisível em vez de removê-lo do DOM
   botaoBoraLa.style.display = "none";
   botaoComecar.style.display = "none";
-
-  //3. quando a pessoa apertar na resposta. se certa: verde + aparece resposta. se errada, contorna vermelha + aparece resposta
 });
 
 
 
 
+// ----------- Botões de resposta
+let botoesRespostas = document.querySelectorAll(".resposta")
+console.log(botoesRespostas)
+
+botoesRespostas.forEach(function (botao) {
+
+  botao.addEventListener("mouseover", function() {
+    botao.style.cursor = "pointer";
+    botao.style.transform = "scale(1.05)";
+  });
+
+  botao.addEventListener("mouseout", function () {
+    botao.style.transform = "";
+  });
+
+  botao.addEventListener("click", function(e) {
+    console.log(e.target.id) // usar e.target para saber informações sobre um elemento html
+    boxPergunta.style.margin = "-20rem auto 0rem auto";
+    boxJustificativa.style.top = "110%";
+
+    const primeiraPergunta = dadosArmazenados[0]
+
+    let idBotaoClicado = e.target.id // info do botão clicado
+    let respostaCerta = primeiraPergunta.resposta_certa // info com a resposta certa
+
+    if (idBotaoClicado === respostaCerta) {
+      botao.style.boxShadow = "0px 0px 10px rgb(96, 244, 47)";
+      botao.style.backgroundColor = "rgb(96, 244, 47)"
+    }
+
+    else {
+      botao.style.boxShadow = "0px 0px 10px rgb(244, 47, 47)";
+      botao.style.backgroundColor = "rgb(244, 47, 47)";
+    }
+  })
+
+  
+
+})
+
+// let respostaCerta = primeiraPergunta.resposta_certa
+//resultado.innerHTML = primeiraPergunta.pergunta colocar 'vc errou, vc faz isso'...
+//3. quando a pessoa apertar na resposta. se certa: verde + aparece resposta. se errada, contorna vermelha + aparece resposta
 
 
 // Acessar as linhas sorteadas pelos índices
