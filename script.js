@@ -116,7 +116,7 @@ botaoComecar.addEventListener('click', function() {
 
 
 
-//----------- Funcionalidades do botão 'bora lá'
+//----------- Funcionalidades do botão 'bora lá' + primeira pergunta
 let botaoBoraLa = document.querySelector(".botao-bora-la");
 let paginaInicial = document.querySelector(".fundo");
 let boxPergunta = document.querySelector(".box-pergunta");
@@ -155,6 +155,44 @@ botaoBoraLa.addEventListener("click", function () {
 
 
 
+
+
+// ---------- Pergunta 2 - botão 'proxima'
+
+botaoBoraLa.addEventListener("click", function () {
+  // Div inicial com foto e nome do jogo somem
+  paginaInicial.style.opacity = "0";
+
+  // Deixa a box visível
+  boxPergunta.style.opacity = "1";
+  boxJustificativa.style.opacity = "1";
+
+  // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
+  const primeiraPergunta = dadosArmazenados[0]
+  pergunta.innerHTML = primeiraPergunta.pergunta
+  opcao1.innerHTML = primeiraPergunta.opcao_1
+  opcao2.innerHTML = primeiraPergunta.opcao_2
+  opcao3.innerHTML = primeiraPergunta.opcao_3
+  justificativa.innerHTML = primeiraPergunta.justificativa
+
+  // Torna o botãoBoraLa invisível em vez de removê-lo do DOM
+  botaoBoraLa.style.display = "none";
+  botaoComecar.style.display = "none";
+});
+
+
+
+
+
+
+
+
+
+
+// ----------- Resultado
+let resultadoQuiz = 0
+
+
 // ----------- Botões de resposta
 let botoesRespostas = document.querySelectorAll(".resposta")
 console.log(botoesRespostas)
@@ -172,8 +210,6 @@ botoesRespostas.forEach(function (botao) {
 
   botao.addEventListener("click", function(e) {
     console.log(e.target.id) // usar e.target para saber informações sobre um elemento html
-    boxPergunta.style.margin = "-20rem auto 0rem auto";
-    boxJustificativa.style.top = "110%";
 
     const primeiraPergunta = dadosArmazenados[0]
 
@@ -183,17 +219,27 @@ botoesRespostas.forEach(function (botao) {
     if (idBotaoClicado === respostaCerta) {
       botao.style.boxShadow = "0px 0px 10px rgb(96, 244, 47)";
       botao.style.backgroundColor = "rgb(96, 244, 47)"
+      resultado.innerHTML = "Você acertou!! 🥳"
+      resultadoQuiz += 1; // adiciona um no total do quiz
     }
 
     else {
       botao.style.boxShadow = "0px 0px 10px rgb(244, 47, 47)";
       botao.style.backgroundColor = "rgb(244, 47, 47)";
+      resultado.innerHTML = "Você errou!! 😭"
     }
-  })
 
-  
-
+    boxPergunta.style.margin = "-20rem auto 0rem auto";
+    boxPergunta.style.transition = "0.6s ease";
+    boxJustificativa.style.top = "110%";
+    boxJustificativa.style.transition = "0.6s ease";
+  });
 })
+
+
+
+
+
 
 // let respostaCerta = primeiraPergunta.resposta_certa
 //resultado.innerHTML = primeiraPergunta.pergunta colocar 'vc errou, vc faz isso'...
