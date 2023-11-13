@@ -114,11 +114,11 @@ botaoComecar.addEventListener('click', function() {
 
 
 
-let indice_pergunta = 0
-let indice_resposta = 0
 
 
 //----------- Funcionalidades do botão 'bora lá' + primeira pergunta
+let indice_pergunta = 0
+
 let botaoBoraLa = document.getElementById("botao-bora-la");
 let paginaInicial = document.querySelector(".fundo");
 let boxPergunta = document.querySelector(".box-pergunta");
@@ -149,7 +149,7 @@ botaoBoraLa.addEventListener("click", function () {
   opcao2.innerHTML = primeiraPergunta.opcao_2
   opcao3.innerHTML = primeiraPergunta.opcao_3
   justificativa.innerHTML = primeiraPergunta.justificativa
-  
+  console.log(`antes de escolher a resposta, ${indice_resposta}`)
   indice_pergunta += 1;
   
 
@@ -162,16 +162,16 @@ botaoBoraLa.addEventListener("click", function () {
 
 
 // ---------- Pergunta 2 - botão 'proxima'
-let botaoQuiz = document.querySelector(".botao-proxima")
+let botaoProxima = document.querySelector(".botao-proxima")
 
 
 // Infos para toque
-botaoQuiz.addEventListener("mouseover", function () {
-  botaoQuiz.style.cursor = "pointer";
-  botaoQuiz.style.transform = "scale(1.03)";
+botaoProxima.addEventListener("mouseover", function () {
+  botaoProxima.style.cursor = "pointer";
+  botaoProxima.style.transform = "scale(1.03)";
 });
 
-botaoQuiz.addEventListener("mouseout", function () {
+botaoProxima.addEventListener("mouseout", function () {
   botaoBoraLa.style.transform = "";
 });
 
@@ -179,14 +179,15 @@ botaoQuiz.addEventListener("mouseout", function () {
 
 
 
-// O PROBLEMA ESTÁ AQUI Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
-botaoQuiz.addEventListener("click", function handler() {
+// Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
+botaoProxima.addEventListener("click", function handler() {
 
   // mudar a estrutura dos botões para amarelo
   botoesRespostas.forEach(function (botao) {
     botao.style.cursor = "pointer";
     botao.style.backgroundColor = "#EFC180";
     botao.style.boxShadow = "0px 0px 10px rgb(239, 193, 128)";
+  });
 
     // volta as perguntas e a justificativa para o centro
     boxPergunta.style.margin = "auto";
@@ -194,7 +195,7 @@ botaoQuiz.addEventListener("click", function handler() {
     boxJustificativa.style.top = "10%";
     boxJustificativa.style.transition = "0.6s ease";
 
-    if (indice_pergunta < 4) {
+    if (indice_pergunta < 5) {
 
       let primeiraPergunta = dadosArmazenados[indice_pergunta]
       pergunta.innerHTML = primeiraPergunta.pergunta
@@ -206,11 +207,10 @@ botaoQuiz.addEventListener("click", function handler() {
       // Deixa a box visível
       boxPergunta.style.opacity = "1";
       boxJustificativa.style.opacity = "1";
-      console.log(`esse é o ${indice_pergunta} quando chega na proxima pergunta`)
+
       indice_pergunta += 1;
     };
   });
-});
 
 
 
@@ -219,10 +219,12 @@ botaoQuiz.addEventListener("click", function handler() {
 
 
 // ----------- Resultado
+let indice_resposta = 0
 let resultadoQuiz = 0
 
 
-// ----------- Botões de resposta
+// ----------- Botões de resposta   ------- AGORA O PROBLRMA ESTÁ AQUI
+// O PROBLEMA É: NÃO ESTÁ BATENDO AS RESPOSTAS COM O BOTÃO CLICADO
 botoesRespostas.forEach(function (botao) {
 
   botao.addEventListener("mouseover", function() {
@@ -238,6 +240,7 @@ botoesRespostas.forEach(function (botao) {
     console.log(`o botão que eu apertei é ${e.target.id}`) // usar e.target para saber informações sobre um elemento html
 
     let primeiraPergunta = dadosArmazenados[indice_resposta]
+    console.log(`após escolher a resposta, ${indice_resposta}`)
 
     let idBotaoClicado = e.target.id // info do botão clicado
     let respostaCerta = primeiraPergunta.resposta_certa // info com a resposta certa
