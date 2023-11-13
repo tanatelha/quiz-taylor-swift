@@ -117,7 +117,7 @@ botaoComecar.addEventListener('click', function() {
 
 
 //----------- Funcionalidades do botão 'bora lá' + primeira pergunta
-let indice_pergunta = 0
+let indicePergunta = 0
 
 let botaoBoraLa = document.getElementById("botao-bora-la");
 let paginaInicial = document.querySelector(".fundo");
@@ -143,14 +143,15 @@ botaoBoraLa.addEventListener("click", function () {
   boxJustificativa.style.opacity = "1";
 
   // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
-  let primeiraPergunta = dadosArmazenados[indice_pergunta]
+  let primeiraPergunta = dadosArmazenados[indicePergunta]
   pergunta.innerHTML = primeiraPergunta.pergunta
   opcao1.innerHTML = primeiraPergunta.opcao_1
   opcao2.innerHTML = primeiraPergunta.opcao_2
   opcao3.innerHTML = primeiraPergunta.opcao_3
   justificativa.innerHTML = primeiraPergunta.justificativa
-  console.log(`antes de escolher a resposta, ${indice_resposta}`)
-  indice_pergunta += 1;
+  console.log(`antes de escolher a resposta, ${indicePergunta}`)
+
+  indicePergunta += 1;
   
 
   // Torna o botãoBoraLa invisível em vez de removê-lo do DOM
@@ -195,9 +196,9 @@ botaoProxima.addEventListener("click", function handler() {
     boxJustificativa.style.top = "10%";
     boxJustificativa.style.transition = "0.6s ease";
 
-    if (indice_pergunta < 5) {
+    if (indicePergunta < 5) {
 
-      let primeiraPergunta = dadosArmazenados[indice_pergunta]
+      let primeiraPergunta = dadosArmazenados[indicePergunta]
       pergunta.innerHTML = primeiraPergunta.pergunta
       opcao1.innerHTML = primeiraPergunta.opcao_1
       opcao2.innerHTML = primeiraPergunta.opcao_2
@@ -208,7 +209,7 @@ botaoProxima.addEventListener("click", function handler() {
       boxPergunta.style.opacity = "1";
       boxJustificativa.style.opacity = "1";
 
-      indice_pergunta += 1;
+      indicePergunta += 1;
     };
   });
 
@@ -219,7 +220,7 @@ botaoProxima.addEventListener("click", function handler() {
 
 
 // ----------- Resultado
-let indice_resposta = 0
+let indiceResposta = 0
 let resultadoQuiz = 0
 
 
@@ -239,11 +240,11 @@ botoesRespostas.forEach(function (botao) {
   botao.addEventListener("click", function(e) {
     console.log(`o botão que eu apertei é ${e.target.id}`) // usar e.target para saber informações sobre um elemento html
 
-    let primeiraPergunta = dadosArmazenados[indice_resposta]
-    console.log(`após escolher a resposta, ${indice_resposta}`)
+    let infoPergunta = dadosArmazenados[indicePergunta - 1];
+
 
     let idBotaoClicado = e.target.id // info do botão clicado
-    let respostaCerta = primeiraPergunta.resposta_certa // info com a resposta certa
+    let respostaCerta = infoPergunta.resposta_certa // info com a resposta certa
     console.log(`A resposta é ${respostaCerta}`)
 
     if (idBotaoClicado === respostaCerta) {
@@ -265,7 +266,6 @@ botoesRespostas.forEach(function (botao) {
     boxJustificativa.style.transition = "0.6s ease";
   });
 
-  indice_resposta +=1;
 })
 
 
