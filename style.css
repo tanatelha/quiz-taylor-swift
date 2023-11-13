@@ -123,6 +123,7 @@ button{
     border-radius: 1rem;
     font-weight: 600;
     cursor: auto;
+    transition: 0.6s ease;
 }
 
 button.botao-comecar{
@@ -136,7 +137,7 @@ button.botao-comecar{
     transform: "";
 }
 
-button.botao-bora-la{
+#botao-bora-la{
     background-color: #EFC180;
     color: black;
     padding: 1.3rem;
@@ -210,6 +211,7 @@ button.botao-proxima {
     transition: 1s ease;
     transform: "";
     margin: auto;
+    transition: 0.6s ease;
 }
 
 p.titulo-pergunta{
