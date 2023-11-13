@@ -9,6 +9,8 @@ let opcao3 = document.querySelector("#opcao-3")
 let resultado = document.querySelector(".resultado")
 let justificativa = document.querySelector(".texto-justificativa")
 
+let botoesRespostas = document.querySelectorAll(".resposta") // botões de respostas das perguntas
+
 // ----------- Definindo as perguntas em variáveis
 
 const segundaPergunta = dadosArmazenados[1]
@@ -112,15 +114,16 @@ botaoComecar.addEventListener('click', function() {
 
 
 
-
-
+let indice_pergunta = 0
+let indice_resposta = 0
 
 
 //----------- Funcionalidades do botão 'bora lá' + primeira pergunta
-let botaoBoraLa = document.querySelector(".botao-bora-la");
+let botaoBoraLa = document.getElementById("botao-bora-la");
 let paginaInicial = document.querySelector(".fundo");
 let boxPergunta = document.querySelector(".box-pergunta");
 let boxJustificativa = document.querySelector(".box-justificativa")
+
 
 botaoBoraLa.addEventListener("mouseover", function () {
   botaoBoraLa.style.cursor = "pointer";
@@ -140,48 +143,74 @@ botaoBoraLa.addEventListener("click", function () {
   boxJustificativa.style.opacity = "1";
 
   // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
-  const primeiraPergunta = dadosArmazenados[0]
+  let primeiraPergunta = dadosArmazenados[indice_pergunta]
   pergunta.innerHTML = primeiraPergunta.pergunta
   opcao1.innerHTML = primeiraPergunta.opcao_1
   opcao2.innerHTML = primeiraPergunta.opcao_2
   opcao3.innerHTML = primeiraPergunta.opcao_3
   justificativa.innerHTML = primeiraPergunta.justificativa
+  
+  indice_pergunta += 1;
+  
 
   // Torna o botãoBoraLa invisível em vez de removê-lo do DOM
   botaoBoraLa.style.display = "none";
   botaoComecar.style.display = "none";
 });
-
-
 
 
 
 
 // ---------- Pergunta 2 - botão 'proxima'
+let botaoQuiz = document.querySelector(".botao-proxima")
 
-botaoBoraLa.addEventListener("click", function () {
-  // Div inicial com foto e nome do jogo somem
-  paginaInicial.style.opacity = "0";
 
-  // Deixa a box visível
-  boxPergunta.style.opacity = "1";
-  boxJustificativa.style.opacity = "1";
+// Infos para toque
+botaoQuiz.addEventListener("mouseover", function () {
+  botaoQuiz.style.cursor = "pointer";
+  botaoQuiz.style.transform = "scale(1.03)";
+});
 
-  // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
-  const primeiraPergunta = dadosArmazenados[0]
-  pergunta.innerHTML = primeiraPergunta.pergunta
-  opcao1.innerHTML = primeiraPergunta.opcao_1
-  opcao2.innerHTML = primeiraPergunta.opcao_2
-  opcao3.innerHTML = primeiraPergunta.opcao_3
-  justificativa.innerHTML = primeiraPergunta.justificativa
-
-  // Torna o botãoBoraLa invisível em vez de removê-lo do DOM
-  botaoBoraLa.style.display = "none";
-  botaoComecar.style.display = "none";
+botaoQuiz.addEventListener("mouseout", function () {
+  botaoBoraLa.style.transform = "";
 });
 
 
 
+
+
+// O PROBLEMA ESTÁ AQUI Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
+botaoQuiz.addEventListener("click", function handler() {
+
+  // mudar a estrutura dos botões para amarelo
+  botoesRespostas.forEach(function (botao) {
+    botao.style.cursor = "pointer";
+    botao.style.backgroundColor = "#EFC180";
+    botao.style.boxShadow = "0px 0px 10px rgb(239, 193, 128)";
+
+    // volta as perguntas e a justificativa para o centro
+    boxPergunta.style.margin = "auto";
+    boxPergunta.style.transition = "0.6s ease";
+    boxJustificativa.style.top = "10%";
+    boxJustificativa.style.transition = "0.6s ease";
+
+    if (indice_pergunta < 4) {
+
+      let primeiraPergunta = dadosArmazenados[indice_pergunta]
+      pergunta.innerHTML = primeiraPergunta.pergunta
+      opcao1.innerHTML = primeiraPergunta.opcao_1
+      opcao2.innerHTML = primeiraPergunta.opcao_2
+      opcao3.innerHTML = primeiraPergunta.opcao_3
+      justificativa.innerHTML = primeiraPergunta.justificativa
+
+      // Deixa a box visível
+      boxPergunta.style.opacity = "1";
+      boxJustificativa.style.opacity = "1";
+      console.log(`esse é o ${indice_pergunta} quando chega na proxima pergunta`)
+      indice_pergunta += 1;
+    };
+  });
+});
 
 
 
@@ -194,9 +223,6 @@ let resultadoQuiz = 0
 
 
 // ----------- Botões de resposta
-let botoesRespostas = document.querySelectorAll(".resposta")
-console.log(botoesRespostas)
-
 botoesRespostas.forEach(function (botao) {
 
   botao.addEventListener("mouseover", function() {
@@ -209,12 +235,13 @@ botoesRespostas.forEach(function (botao) {
   });
 
   botao.addEventListener("click", function(e) {
-    console.log(e.target.id) // usar e.target para saber informações sobre um elemento html
+    console.log(`o botão que eu apertei é ${e.target.id}`) // usar e.target para saber informações sobre um elemento html
 
-    const primeiraPergunta = dadosArmazenados[0]
+    let primeiraPergunta = dadosArmazenados[indice_resposta]
 
     let idBotaoClicado = e.target.id // info do botão clicado
     let respostaCerta = primeiraPergunta.resposta_certa // info com a resposta certa
+    console.log(`A resposta é ${respostaCerta}`)
 
     if (idBotaoClicado === respostaCerta) {
       botao.style.boxShadow = "0px 0px 10px rgb(96, 244, 47)";
@@ -234,6 +261,8 @@ botoesRespostas.forEach(function (botao) {
     boxJustificativa.style.top = "110%";
     boxJustificativa.style.transition = "0.6s ease";
   });
+
+  indice_resposta +=1;
 })
 
 
