@@ -220,7 +220,6 @@ botaoProxima.addEventListener("click", function handler() {
 
 
 // ----------- Resultado
-let indiceResposta = 0
 let resultadoQuiz = 0
 
 
@@ -245,7 +244,6 @@ botoesRespostas.forEach(function (botao) {
 
     let idBotaoClicado = e.target.id // info do botão clicado
     let respostaCerta = infoPergunta.resposta_certa // info com a resposta certa
-    console.log(`A resposta é ${respostaCerta}`)
 
     if (idBotaoClicado === respostaCerta) {
       botao.style.boxShadow = "0px 0px 10px rgb(96, 244, 47)";
@@ -260,12 +258,17 @@ botoesRespostas.forEach(function (botao) {
       resultado.innerHTML = "Você errou!! 😭"
     }
 
+    console.log(resultadoQuiz)
+
     boxPergunta.style.margin = "-20rem auto 0rem auto";
     boxPergunta.style.transition = "0.6s ease";
     boxJustificativa.style.top = "110%";
     boxJustificativa.style.transition = "0.6s ease";
   });
 
+  //if (indicePergunta === 5) {
+
+  //};
 })
 
 
