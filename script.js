@@ -109,7 +109,6 @@ botaoComecar.addEventListener('click', function() {
     // Fazer aparecer a div com as regras do jogo
     boxRegras.style.top = "65%";
     boxRegras.style.opacity = "1";
-
 });
 
 
@@ -138,9 +137,9 @@ botaoBoraLa.addEventListener("click", function () {
   // Div inicial com foto e nome do jogo somem
   paginaInicial.style.opacity = "0";
 
-  // Deixa a box visível
-  boxPergunta.style.opacity = "1";
-  boxJustificativa.style.opacity = "1";
+  // Torna o botãoBoraLa invisível em vez de removê-lo do DOM
+  botaoBoraLa.style.display = "none";
+  botaoComecar.style.display = "none";
 
   // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
   let primeiraPergunta = dadosArmazenados[indicePergunta]
@@ -153,10 +152,9 @@ botaoBoraLa.addEventListener("click", function () {
 
   indicePergunta += 1;
   
+  // Deixa a box visível
+  boxPergunta.style.opacity = "1";
 
-  // Torna o botãoBoraLa invisível em vez de removê-lo do DOM
-  botaoBoraLa.style.display = "none";
-  botaoComecar.style.display = "none";
 });
 
 
@@ -223,8 +221,7 @@ botaoProxima.addEventListener("click", function handler() {
 let resultadoQuiz = 0
 
 
-// ----------- Botões de resposta   ------- AGORA O PROBLRMA ESTÁ AQUI
-// O PROBLEMA É: NÃO ESTÁ BATENDO AS RESPOSTAS COM O BOTÃO CLICADO
+// ----------- Botões de resposta
 botoesRespostas.forEach(function (botao) {
 
   botao.addEventListener("mouseover", function() {
@@ -237,8 +234,13 @@ botoesRespostas.forEach(function (botao) {
   });
 
   botao.addEventListener("click", function(e) {
-    console.log(`o botão que eu apertei é ${e.target.id}`) // usar e.target para saber informações sobre um elemento html
+    
+    // Deixa o boz justificativa visível, mas ainda escondido atrás da pergunta
+    boxJustificativa.style.opacity = "1"
 
+    // usar e.target para saber informações sobre um elemento html
+    console.log(`o botão que eu apertei é ${e.target.id}`)
+    
     let infoPergunta = dadosArmazenados[indicePergunta - 1];
 
 
