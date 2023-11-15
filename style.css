@@ -57,7 +57,7 @@ span.negrito{
 
 
 
-section.pagina-principal{
+main{
     width: 100%;
     height: 100vh;
     background-image: url("background-quiz.svg");
@@ -250,41 +250,56 @@ p.resultado{
 
 div.resultado{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    background-color: white;
+    border-radius: 2.0rem;
+    width: 450px;
+    height: 270px;
+    box-shadow: 0px 0px 20px #EFC180;
+    z-index: 99;
 }
 
-div.box-resultado-imagem{
-    margin: 0rem;
-    z-index: 8;
-    background-color: white;
+div.box-resultado-titulo{
+
 }
 
 img.imagem-resultado{
     border-radius: 50%;
+    width: 15rem;
+    height: 15rem;
+    margin: 1rem;
 }
 
 
 div.box-resultado-texto{
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    background-color: white;
-    border-radius: 2.0rem;
-    width: 500px;
-    height: 350px;
-    margin: auto; /*mudo para -20rem auto 0rem auto no js*/
-    box-shadow: 0px 0px 20px #EFC180;
     z-index: 12;
-    transition: 0.6s ease;
-    opacity: 0;
+    padding: 2rem;
 }
 
 
+p.titulo-resultado{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 4rem 2rem 0rem 2rem;
+    text-align: center;
+}
 
-
-
+p.texto-resultado{
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 1rem 1rem 1rem 1rem;
+    text-align: center;
+    line-height: 2rem;
+}
 
 
 
