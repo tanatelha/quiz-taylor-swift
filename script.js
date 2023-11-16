@@ -1,29 +1,26 @@
 // Array para armazenar os dados do sorteio
 let dadosArmazenados = [];
 
+
+
 // Nomear as variáveis gerais
-let pergunta = document.querySelector(".titulo-pergunta")
-let opcao1 = document.querySelector("#opcao-1")
-let opcao2 = document.querySelector("#opcao-2")
-let opcao3 = document.querySelector("#opcao-3")
-let resultado = document.querySelector(".resultado")
-let justificativa = document.querySelector(".texto-justificativa")
+let pergunta = document.querySelector(".titulo-pergunta");
+let opcao1 = document.querySelector("#opcao-1");
+let opcao2 = document.querySelector("#opcao-2");
+let opcao3 = document.querySelector("#opcao-3");
+let resultado = document.querySelector(".resultado");
+let justificativa = document.querySelector(".texto-justificativa");
 
-let botoesRespostas = document.querySelectorAll(".resposta") // botões de respostas das perguntas
+let botoesRespostas = document.querySelectorAll(".resposta"); // botões de respostas das perguntas
 
-// ----------- Definindo as perguntas em variáveis
 
-const segundaPergunta = dadosArmazenados[1]
-const terceiraPergunta = dadosArmazenados[2]
-const quartaPergunta = dadosArmazenados[3]
-const quintaPergunta = dadosArmazenados[4]
 
 
 // ----------- função para sortear as linhas do quiz quando a página carrega
 async function sorteioPerguntas() {
 
   // subir os dados em d3
-  const dados = await d3.csv("perguntas-quiz.csv")
+  const dados = await d3.csv("perguntas-quiz.csv");
 
   // Fazer o sorteio das perguntas
   const numLinhas = dados.length; // calcula a quantidade de linhas da base de dados
@@ -81,8 +78,8 @@ async function sorteioPerguntas() {
 
 
 // ----------- Funcionalidades do botão 'começar'
-let botaoComecar = document.querySelector(".botao-comecar")
-let boxRegras = document.querySelector(".box-regras")
+let botaoComecar = document.querySelector(".botao-comecar");
+let boxRegras = document.querySelector(".box-regras");
 
 
 botaoComecar.addEventListener("mouseover", function () {
@@ -121,7 +118,7 @@ let indicePergunta = 0
 let botaoBoraLa = document.getElementById("botao-bora-la");
 let paginaInicial = document.querySelector(".fundo");
 let boxPergunta = document.querySelector(".box-pergunta");
-let boxJustificativa = document.querySelector(".box-justificativa")
+let boxJustificativa = document.querySelector(".box-justificativa");
 
 
 botaoBoraLa.addEventListener("mouseover", function () {
@@ -142,13 +139,12 @@ botaoBoraLa.addEventListener("click", function () {
   botaoComecar.style.display = "none";
 
   // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
-  let primeiraPergunta = dadosArmazenados[indicePergunta]
-  pergunta.innerHTML = primeiraPergunta.pergunta
-  opcao1.innerHTML = primeiraPergunta.opcao_1
-  opcao2.innerHTML = primeiraPergunta.opcao_2
-  opcao3.innerHTML = primeiraPergunta.opcao_3
-  justificativa.innerHTML = primeiraPergunta.justificativa
-  console.log(`antes de escolher a resposta, ${indicePergunta}`)
+  let primeiraPergunta = dadosArmazenados[indicePergunta];
+  pergunta.innerHTML = primeiraPergunta.pergunta;
+  opcao1.innerHTML = primeiraPergunta.opcao_1;
+  opcao2.innerHTML = primeiraPergunta.opcao_2;
+  opcao3.innerHTML = primeiraPergunta.opcao_3;
+  justificativa.innerHTML = primeiraPergunta.justificativa;
 
   indicePergunta += 1;
   
@@ -161,8 +157,31 @@ botaoBoraLa.addEventListener("click", function () {
 
 
 // ---------- Pergunta 2 - botão 'proxima'
-let botaoProxima = document.querySelector(".botao-proxima")
+let botaoProxima = document.querySelector(".botao-proxima");
+let paginaFinal = document.querySelector(".box-resultado");
+let paginaFinalTitulo = document.querySelector(".titulo-resultado");
+let paginaFinalTexto = document.querySelector(".texto-resultado");// ----------- Resultado
+let resultadoQuiz = 0
 
+async function resultadoFinal() {
+  // subir os dados em d3
+  const dadosResultado = await d3.csv("resultado-quiz.csv");
+
+  for (let i = 0; i < dadosResultado.length; i++) {
+    let linha = dadosResultado[i];
+    
+    let resultadoAtual = parseInt(linha.resultado); // transformando a string em um number. poderia usar parseFloat(): Esta função é usada para converter uma string em um número decimal
+    
+    if (resultadoAtual === resultadoQuiz) {
+      console.log('lalalala');
+        // Faça algo quando encontrar o resultado desejado
+        paginaFinalTitulo.innerHTML = linha.titulo;
+        paginaFinalTexto.innerHTML = linha.texto;
+    };
+  };
+};
+
+resultadoFinal();
 
 // Infos para toque
 botaoProxima.addEventListener("mouseover", function () {
@@ -173,9 +192,6 @@ botaoProxima.addEventListener("mouseover", function () {
 botaoProxima.addEventListener("mouseout", function () {
   botaoBoraLa.style.transform = "";
 });
-
-
-
 
 
 // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
@@ -196,19 +212,26 @@ botaoProxima.addEventListener("click", function handler() {
 
     if (indicePergunta < 5) {
 
-      let primeiraPergunta = dadosArmazenados[indicePergunta]
-      pergunta.innerHTML = primeiraPergunta.pergunta
-      opcao1.innerHTML = primeiraPergunta.opcao_1
-      opcao2.innerHTML = primeiraPergunta.opcao_2
-      opcao3.innerHTML = primeiraPergunta.opcao_3
-      justificativa.innerHTML = primeiraPergunta.justificativa
+      let primeiraPergunta = dadosArmazenados[indicePergunta];
+      pergunta.innerHTML = primeiraPergunta.pergunta;
+      opcao1.innerHTML = primeiraPergunta.opcao_1;
+      opcao2.innerHTML = primeiraPergunta.opcao_2;
+      opcao3.innerHTML = primeiraPergunta.opcao_3;
+      justificativa.innerHTML = primeiraPergunta.justificativa;
 
       // Deixa a box visível
       boxPergunta.style.opacity = "1";
       boxJustificativa.style.opacity = "1";
 
       indicePergunta += 1;
-    };
+    }
+    
+    else {
+      paginaFinal.style.opacity = "1";
+      boxPergunta.style.opacity = "0";
+      boxJustificativa.style.opacity = "0";
+      resultadoFinal();
+    }; 
   });
 
 
@@ -217,8 +240,7 @@ botaoProxima.addEventListener("click", function handler() {
 
 
 
-// ----------- Resultado
-let resultadoQuiz = 0
+
 
 
 // ----------- Botões de resposta
@@ -236,31 +258,30 @@ botoesRespostas.forEach(function (botao) {
   botao.addEventListener("click", function(e) {
     
     // Deixa o boz justificativa visível, mas ainda escondido atrás da pergunta
-    boxJustificativa.style.opacity = "1"
+    boxJustificativa.style.opacity = "1";
 
     // usar e.target para saber informações sobre um elemento html
-    console.log(`o botão que eu apertei é ${e.target.id}`)
-    
+    //console.log(`o botão que eu apertei é ${e.target.id}`)
+
     let infoPergunta = dadosArmazenados[indicePergunta - 1];
 
 
-    let idBotaoClicado = e.target.id // info do botão clicado
-    let respostaCerta = infoPergunta.resposta_certa // info com a resposta certa
+    let idBotaoClicado = e.target.id; // info do botão clicado
+    let respostaCerta = infoPergunta.resposta_certa; // info com a resposta certa
 
     if (idBotaoClicado === respostaCerta) {
       botao.style.boxShadow = "0px 0px 10px rgb(96, 244, 47)";
-      botao.style.backgroundColor = "rgb(96, 244, 47)"
-      resultado.innerHTML = "Você acertou!! 🥳"
+      botao.style.backgroundColor = "rgb(96, 244, 47)";
+      resultado.innerHTML = "Você acertou!! 🥳";
       resultadoQuiz += 1; // adiciona um no total do quiz
     }
 
     else {
       botao.style.boxShadow = "0px 0px 10px rgb(244, 47, 47)";
-      botao.style.backgroundColor = "rgb(244, 47, 47)";
-      resultado.innerHTML = "Você errou!! 😭"
+      botao.style.backgroundColor = "rgb(244, 47, 47)";;
+      resultado.innerHTML = "Você errou!! 😭";
     }
 
-    console.log(resultadoQuiz)
 
     boxPergunta.style.margin = "-20rem auto 0rem auto";
     boxPergunta.style.transition = "0.6s ease";
@@ -271,7 +292,7 @@ botoesRespostas.forEach(function (botao) {
   //if (indicePergunta === 5) {
 
   //};
-})
+});
 
 
 
