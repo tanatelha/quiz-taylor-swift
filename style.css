@@ -242,7 +242,7 @@ p.texto-justificativa{
 
 
 
-div.resultado{
+div.box-resultado{
     display: flex;
     flex-direction: column;
     align-items: center;
