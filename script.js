@@ -328,6 +328,7 @@ if (typeof document.hidden !== "undefined") {
 // Adiciona um ouvinte de eventos à mudança de visibilidade (visibilityChange), e quando essa mudança ocorre, esse event chama a função acao() e roda o código dentro dela
 document.addEventListener(visibilityChange, acao, false);
 function acao() {
+  console.log('lalala aaaaaaaaa')
     // faz desaparecer tudo que tem na página
     paginaInicial.style.display = "none"
     botaoComecar.style.display = "none"
