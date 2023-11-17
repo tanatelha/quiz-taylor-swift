@@ -295,6 +295,54 @@ botoesRespostas.forEach(function (botao) {
 });
 
 
+// ----------- Se a pessoa sair da página...
+
+// cada uma dessas versões do documento.algo serve para um navegador. Seu valor é true quando a página está oculta (por exemplo, quando o usuário muda para outra aba ou minimiza a janela do navegador) e false quando a página está visível.
+
+// Em resumo, esse trecho de código faz uma verificação para determinar a capacidade do navegador de utilizar a propriedade document.hidden e o evento visibilitychange. Se suportado, ele define variáveis para usar essas funcionalidades posteriormente no código, caso contrário, ele tenta verificar outras propriedades equivalentes para suportar diferentes navegadores e versões.
+
+var hidden, visibilityChange;
+// para navegadores mais modernos
+
+if (typeof document.hidden !== "undefined") {
+  // Se for definido como "undefined", isso indica que o navegador suporta essa funcionalidade hidden
+    hidden = "hidden";
+    visibilityChange = "visibilitychange";
+
+// para Mozilla
+} else if (typeof document.mozHidden !== "undefined") {
+    hidden = "mozHidden";
+    visibilityChange = "mozvisibilitychange";
+
+// para Internet Explorer (IE) da Microsoft.
+} else if (typeof document.msHidden !== "undefined") {
+    hidden = "msHidden";
+    visibilityChange = "msvisibilitychange";
+
+// para navegadores que usam o motor WebKit, como o Safari
+} else if (typeof document.webkitHidden !== "undefined") {
+    hidden = "webkitHidden";
+    visibilityChange = "webkitvisibilitychange";
+}
+
+// Adiciona um ouvinte de eventos à mudança de visibilidade (visibilityChange), e quando essa mudança ocorre, esse event chama a função acao() e roda o código dentro dela
+document.addEventListener(visibilityChange, acao, false);
+function acao() {
+    // faz desaparecer tudo que tem na página
+    paginaInicial.style.display = "none"
+    botaoComecar.style.display = "none"
+    botaoBoraLa.style.display = "none"
+    boxRegras.style.display = "none"
+    boxPergunta.style.display = "none"
+    botaoProxima.style.display = "none"
+
+    // aparece boz de resultado
+    paginaFinal.style.opacity = "1"
+    paginaFinalTitulo.innerHTML = "SAIU DA PÁGINA? FAKE SWITTER"
+    paginaFinalTexto.innerHTML = "Você inflingiu a regra"
+}
+
+
 
 
 
