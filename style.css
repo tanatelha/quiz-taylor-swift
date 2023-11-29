@@ -72,7 +72,11 @@ div.fundo{
     justify-content: center;
     align-items: center;
     transition: 0.6s ease;
-    z-index: 1;
+    z-index: 98;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
 }
 
 div.imagem-principal{
@@ -81,7 +85,7 @@ div.imagem-principal{
     align-items: center;
     z-index: 1;
     position: absolute;
-    top: 10%;
+    top: -90%;
 }
 
 img.imagem{
@@ -96,19 +100,20 @@ div.box-inicial{
     align-items: center;
     background-color: white;
     border-radius: 2.0rem;
-    width: 450px;
-    height: 200px;
-    margin: 25rem auto;
+    max-width: 450px; /*independente da tela, o máximo de largura é isso*/
+    width: 80vw;
+    height: 200px; /*posso usar um vh para altura flexível*/
     box-shadow: 0px 0px 20px #a258e0e6;
     z-index: 99;
 }
 
 div.box-regras{
-    top: 40%;
+    top: 10%;
     left: auto;
     background-color: white;
     border-radius: 1.0rem;
-    width: 400px;
+    max-width: 400px;
+    width: 80vw;
     height: 210px;
     position: absolute;
     box-shadow: 0px 0px 10px rgb(239, 193, 128);
@@ -177,10 +182,10 @@ div.box-pergunta{
     border-radius: 2.0rem;
     width: 500px;
     height: 350px;
-    margin: auto; /*mudo para -20rem auto 0rem auto no js*/
+    margin: 0 auto; /*mudo para -20rem auto 0rem auto no js*/
     box-shadow: 0px 0px 20px #EFC180;
     z-index: 97;
-    transition: 0.s ease;
+    transition: all 0.6s ease;
     opacity: 0;
 }
 
@@ -196,10 +201,9 @@ div.box-justificativa{
     height: 210px;
     position: absolute;
     box-shadow: 0px 0px 20px #EFC180;
-    transition: 2s ease;
     opacity: 0;
     z-index: 96; /*VER DE MUDAR ISSO NO JS*/
-    transition: cubic-bezier(1, 0, 0, 1) ease;
+    transition: top 0.9s ease, opacity 0.5s ease;
 }
 
 button.botao-proxima {
@@ -210,7 +214,7 @@ button.botao-proxima {
     box-shadow: 0px 0px 10px rgb(239, 193, 128);
     transition: 1s ease;
     transform: "";
-    margin: auto;
+    margin: 0auto;
     transition: 0.6s ease;
 }
 
@@ -228,7 +232,7 @@ button.resposta{
     padding: 1rem 3rem;
     font-size: 1.2rem;
     margin: 1rem 5rem 1rem 5rem;
-    transition: 0.6s ease;
+    transition: all 0.6s ease;
     transform: "";
 }
 
@@ -245,16 +249,18 @@ p.texto-justificativa{
 div.box-resultado{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-around;
     position: absolute;
-    top: 30%;
-    left: 35%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: white;
     border-radius: 2.0rem;
-    width: 450px;
-    height: 270px;
-    box-shadow: 0px 0px 20px #EFC180;
+    max-width: 400px; /*independente da tela, o máximo de largura é isso*/
+    /width: 90vw;
+    height: 250px; /*posso usar um vh para altura flexível*/
+    /box-shadow: 0px 0px 20px #EFC180;
     z-index: 1;
     transition: 0.6s ease;
     opacity: 0;
@@ -315,7 +321,6 @@ p.resultado{
 
 @media (max-width: 400px) {
     div.box-inicial{
-        width: 250px;
         height: 150px;
         top: 30%;
     }
