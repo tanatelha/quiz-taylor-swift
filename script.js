@@ -104,7 +104,7 @@ botaoComecar.addEventListener('click', function() {
       }, 300); // 2000 milissegundos (2 segundos)
 
     // Fazer aparecer a div com as regras do jogo
-    boxRegras.style.top = "65%";
+    boxRegras.style.top = "110%";
     boxRegras.style.opacity = "1";
 });
 
@@ -133,6 +133,7 @@ botaoBoraLa.addEventListener("mouseout", function () {
 botaoBoraLa.addEventListener("click", function () {
   // Div inicial com foto e nome do jogo somem
   paginaInicial.style.opacity = "0";
+  paginaInicial.style.pointerEvents = "none"; /*vai impedir qalquer clique nesse elemento*/
 
   // Torna o botãoBoraLa invisível em vez de removê-lo do DOM
   botaoBoraLa.style.display = "none";
@@ -335,12 +336,13 @@ function acao() {
     botaoBoraLa.style.display = "none"
     boxRegras.style.display = "none"
     boxPergunta.style.display = "none"
+    boxJustificativa.style.display = "none"
     botaoProxima.style.display = "none"
 
     // aparece boz de resultado
     paginaFinal.style.opacity = "1"
     paginaFinalTitulo.innerHTML = "SAIU DA PÁGINA? FAKE SWITTER"
-    paginaFinalTexto.innerHTML = "Você inflingiu a regra"
+    paginaFinalTexto.innerHTML = "Você infringiu a regra"
 }
 
 
