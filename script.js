@@ -209,7 +209,9 @@ botaoProxima.addEventListener("click", function handler() {
   botoesRespostas.forEach(function (botao) {
     botao.style.cursor = "pointer";
     botao.style.backgroundColor = "#EFC180";
+    botao.style.color = 'black';
     botao.style.boxShadow = "0px 0px 10px rgb(239, 193, 128)";
+    botao.style.pointerEvents = '';
   });
 
     // volta as perguntas e a justificativa para o centro
@@ -268,6 +270,19 @@ botoesRespostas.forEach(function (botao) {
     // Parar o timer: clearInterval(timer) é utilizado para interromper o funcionamento do timer que foi previamente iniciado usando setInterval()
     clearInterval(timer);
     
+    // Impeço que outras respostas sejam clicadas
+    let idBotaoClicado = e.target.id; // info do botão clicado
+
+    botoesRespostas.forEach(function(outroBotao) {
+      if (outroBotao.id !== idBotaoClicado) {
+        outroBotao.style.backgroundColor = '#C8C8C8';
+        outroBotao.style.color = '#808080';
+        outroBotao.style.pointerEvents = 'none';
+        outroBotao.style.boxShadow = "";
+      }
+    });
+  
+
     // Deixa o boz justificativa visível, mas ainda escondido atrás da pergunta
     boxJustificativa.style.opacity = "1";
 
@@ -275,9 +290,6 @@ botoesRespostas.forEach(function (botao) {
     //console.log(`o botão que eu apertei é ${e.target.id}`)
 
     let infoPergunta = dadosArmazenados[indicePergunta - 1];
-
-
-    let idBotaoClicado = e.target.id; // info do botão clicado
     let respostaCerta = infoPergunta.resposta_certa; // info com a resposta certa
 
     if (idBotaoClicado === respostaCerta) {
@@ -299,10 +311,6 @@ botoesRespostas.forEach(function (botao) {
     boxJustificativa.style.top = "110%";
     boxJustificativa.style.transition = "0.6s ease";
   });
-
-  //if (indicePergunta === 5) {
-
-  //};
 });
 
 
