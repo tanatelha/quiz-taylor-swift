@@ -151,7 +151,9 @@ botaoBoraLa.addEventListener("click", function () {
   
   // Deixa a box visível
   boxPergunta.style.opacity = "1";
-
+  
+  // Começa a calcular o timer
+  iniciarTimer();
 });
 
 
@@ -164,6 +166,9 @@ let paginaFinalTitulo = document.querySelector(".titulo-resultado");
 let paginaFinalTexto = document.querySelector(".texto-resultado");// ----------- Resultado
 let resultadoQuiz = 0
 
+
+
+
 async function resultadoFinal() {
   // subir os dados em d3
   const dadosResultado = await d3.csv("resultado-quiz.csv");
@@ -174,7 +179,6 @@ async function resultadoFinal() {
     let resultadoAtual = parseInt(linha.resultado); // transformando a string em um number. poderia usar parseFloat(): Esta função é usada para converter uma string em um número decimal
     
     if (resultadoAtual === resultadoQuiz) {
-      console.log('lalalala');
         // Faça algo quando encontrar o resultado desejado
         paginaFinalTitulo.innerHTML = linha.titulo;
         paginaFinalTexto.innerHTML = linha.texto;
@@ -197,6 +201,9 @@ botaoProxima.addEventListener("mouseout", function () {
 
 // Adiciona o conteúdo de pergunta e o conteúdo dos botões de resposta
 botaoProxima.addEventListener("click", function handler() {
+
+  // Começa a calcular o timer
+  resetarTimer();
 
   // mudar a estrutura dos botões para amarelo
   botoesRespostas.forEach(function (botao) {
@@ -257,6 +264,9 @@ botoesRespostas.forEach(function (botao) {
   });
 
   botao.addEventListener("click", function(e) {
+
+    // Parar o timer: clearInterval(timer) é utilizado para interromper o funcionamento do timer que foi previamente iniciado usando setInterval()
+    clearInterval(timer);
     
     // Deixa o boz justificativa visível, mas ainda escondido atrás da pergunta
     boxJustificativa.style.opacity = "1";
@@ -297,9 +307,7 @@ botoesRespostas.forEach(function (botao) {
 
 
 // ----------- Se a pessoa sair da página...
-
 // cada uma dessas versões do documento.algo serve para um navegador. Seu valor é true quando a página está oculta (por exemplo, quando o usuário muda para outra aba ou minimiza a janela do navegador) e false quando a página está visível.
-
 // Em resumo, esse trecho de código faz uma verificação para determinar a capacidade do navegador de utilizar a propriedade document.hidden e o evento visibilitychange. Se suportado, ele define variáveis para usar essas funcionalidades posteriormente no código, caso contrário, ele tenta verificar outras propriedades equivalentes para suportar diferentes navegadores e versões.
 
 var hidden, visibilityChange;
@@ -329,7 +337,6 @@ if (typeof document.hidden !== "undefined") {
 // Adiciona um ouvinte de eventos à mudança de visibilidade (visibilityChange), e quando essa mudança ocorre, esse event chama a função acao() e roda o código dentro dela
 document.addEventListener(visibilityChange, acao, false);
 function acao() {
-  console.log('lalala aaaaaaaaa')
     // faz desaparecer tudo que tem na página
     paginaInicial.style.display = "none"
     botaoComecar.style.display = "none"
@@ -344,6 +351,56 @@ function acao() {
     paginaFinalTitulo.innerHTML = "SAIU DA PÁGINA? FAKE SWITTER"
     paginaFinalTexto.innerHTML = "Você infringiu a regra"
 }
+
+
+// Colocar o timer
+let timer; // Variável para armazenar o timer
+let tempoRestante = 16; // Tempo inicial do timer
+
+// Para adicionar o tempo na div e aparecer para o usuário
+function exibirTempoRestante() {
+  document.querySelector(".timer-conteudo-fluido").innerText = `${tempoRestante} seg`;
+
+}
+
+
+// Função que faz o timer rodar
+function iniciarTimer() {
+  // A função setInterval é usada para executar uma determinada função em intervalos regulares de tempo
+  timer = setInterval(() => {
+    if (tempoRestante > 0){
+      tempoRestante--; // tira 1 do tempo
+      exibirTempoRestante(); // Muda no html o valor de tempo para o usuário
+    }
+      else {
+        // se o tempo acabar e a pessoa não responder, acaba o jogo
+        paginaFinal.style.opacity = "1";
+        boxPergunta.style.opacity = "0";
+        boxJustificativa.style.opacity = "0";
+        paginaFinalTitulo.innerHTML = "O tempo acabou..."
+        paginaFinalTexto.innerHTML = "E você não terminou de responder a pergunta. Com isso, podemos concluir que você é cambista"
+      }
+    
+  }, 1000); // intervalo para o timer rodar (= 1 segundo)
+}
+
+// Reseta o timer para as próximas perguntas
+function resetarTimer() {
+  clearInterval(timer); // Limpa o timer atual, se existir
+  tempoRestante = 15; // Reseta o tempo para 15 segundos
+  exibirTempoRestante(); // Atualiza o display do timer
+  iniciarTimer(); // Inicia o timer novamente
+}
+
+
+
+
+
+
+
+
+
+
 
 
 
