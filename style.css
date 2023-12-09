@@ -11,7 +11,7 @@
     --cor-verde: #12df97;
     --cor-amarelo: #fab508;
     --cor-roxo: #A258E0;
-    --cor-azul: #1BB7E5;
+    --cor-azul: rgb(25, 182, 230)
     --cor-rosa: #F241A3;
   }
 
@@ -173,6 +173,32 @@ div.pergunta {
     z-index: 97;
 }
 
+div.timer{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    align-items: center;
+    border-bottom: 2px dotted var(--cor-amarelo);
+}
+
+p.timer-conteudo-fixo{
+    font-size: 1.2rem;
+    margin: 0.5rem;
+    color: #242E47;
+    font-weight: 600;
+}
+
+p.timer-conteudo-fluido{
+    font-size: 1.2rem;
+    margin: 0.5rem;
+    background-color: #242E47;
+    box-shadow: 0px 0px 10px rgba(25, 182, 230, 0.9);
+    border-radius: 5px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: var(--cor-amarelo);
+    font-weight: 600;
+}
+
 div.box-pergunta{
     display: flex;
     justify-content: center;
@@ -221,7 +247,7 @@ button.botao-proxima {
 p.titulo-pergunta{
     font-size: 1.6rem;
     font-weight: 600;
-    margin: 0rem 2rem 3rem 2rem;
+    margin: 2rem 2rem 2rem 2rem;
     text-align: center;
     line-height: 2.5rem;
 }
@@ -258,9 +284,9 @@ div.box-resultado{
     background-color: white;
     border-radius: 2.0rem;
     max-width: 400px; /*independente da tela, o máximo de largura é isso*/
-    /width: 90vw;
+    width: 90vw;
     height: 250px; /*posso usar um vh para altura flexível*/
-    /box-shadow: 0px 0px 20px #EFC180;
+    box-shadow: 0px 0px 20px #EFC180;
     z-index: 1;
     transition: 0.6s ease;
     opacity: 0;
