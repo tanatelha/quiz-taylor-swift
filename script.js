@@ -164,12 +164,16 @@ let botaoProxima = document.querySelector(".botao-proxima");
 let paginaFinal = document.querySelector(".box-resultado");
 let paginaFinalTitulo = document.querySelector(".titulo-resultado");
 let paginaFinalTexto = document.querySelector(".texto-resultado");// ----------- Resultado
+let elementoImagem = document.querySelector('.imagem-resultado');
 let resultadoQuiz = 0
 
 
 
 
+
 async function resultadoFinal() {
+  clearInterval(timer);
+
   // subir os dados em d3
   const dadosResultado = await d3.csv("resultado-quiz.csv");
 
@@ -182,6 +186,8 @@ async function resultadoFinal() {
         // Faça algo quando encontrar o resultado desejado
         paginaFinalTitulo.innerHTML = linha.titulo;
         paginaFinalTexto.innerHTML = linha.texto;
+        elementoImagem.src = "imagens/" + linha.imagem;
+
     };
   };
 };
