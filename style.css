@@ -207,6 +207,7 @@ div.box-pergunta{
     background-color: white;
     border-radius: 2.0rem;
     max-width: 500px;
+    width: 500px;
     height: 350px;
     margin: 0 auto; /*mudo para -20rem auto 0rem auto no js*/
     box-shadow: 0px 0px 20px #EFC180;
@@ -346,7 +347,6 @@ p.resultado{
   }
 
 @media (max-width: 415px) {
-
     html{
         /*a cada 1 rem, será considerado 10px*/
         font-size: 65%;
