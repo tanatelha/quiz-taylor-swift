@@ -206,7 +206,7 @@ div.box-pergunta{
     align-items: center;
     background-color: white;
     border-radius: 2.0rem;
-    width: 500px;
+    max-width: 500px;
     height: 350px;
     margin: 0 auto; /*mudo para -20rem auto 0rem auto no js*/
     box-shadow: 0px 0px 20px #EFC180;
@@ -358,11 +358,21 @@ p.resultado{
     }
     
     div.box-regras{
-        width: 200px;
+        width: 250px;
         height: 250px;
         transition: 0.6s ease;
         opacity: 0;
-        margin-top: -10rem;
+        margin-top: -0.9rem;
+    }
+
+    div.box-pergunta{
+        width: 300px;
+        height: 400px;
+    }
+
+    div.box-justificativa{
+        width: 300px;
+        height: 220px;
     }
 
     p.titulo{
