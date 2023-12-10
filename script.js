@@ -352,18 +352,19 @@ if (typeof document.hidden !== "undefined") {
 document.addEventListener(visibilityChange, acao, false);
 function acao() {
     // faz desaparecer tudo que tem na página
-    paginaInicial.style.display = "none"
-    botaoComecar.style.display = "none"
-    botaoBoraLa.style.display = "none"
-    boxRegras.style.display = "none"
-    boxPergunta.style.display = "none"
-    boxJustificativa.style.display = "none"
-    botaoProxima.style.display = "none"
+    paginaInicial.style.display = "none";
+    botaoComecar.style.display = "none";
+    botaoBoraLa.style.display = "none";
+    boxRegras.style.display = "none";
+    boxPergunta.style.display = "none";
+    boxJustificativa.style.display = "none";
+    botaoProxima.style.display = "none";
 
     // aparece boz de resultado
-    paginaFinal.style.opacity = "1"
-    paginaFinalTitulo.innerHTML = "SAIU DA PÁGINA? FAKE SWITTER"
-    paginaFinalTexto.innerHTML = "Você infringiu a regra"
+    paginaFinal.style.opacity = "1";
+    paginaFinalTitulo.innerHTML = "SAIU DA PÁGINA? FAKE SWITTER";
+    paginaFinalTexto.innerHTML = "Você infringiu a regra do jogo. Por isso, foi classificado como <span class='negrito'>cambista</span>";
+    elementoImagem.src = "imagens/imagem_youre_cambista.png";
 }
 
 
