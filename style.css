@@ -345,21 +345,32 @@ p.resultado{
     }
   }
 
-@media (max-width: 400px) {
+@media (max-width: 415px) {
+
+    html{
+        /*a cada 1 rem, será considerado 10px*/
+        font-size: 65%;
+    }
+
     div.box-inicial{
         height: 150px;
-        top: 30%;
     }
 
     img.imagem{
-        width: 230px; /* Defina a largura desejada em pixels */
+        width: 300px; /* Defina a largura desejada em pixels */
         height: auto; /* A altura será dimensionada automaticamente para manter a proporção */
-        margin-top: 1rem;
+    }
+
+    img.imagem-resultado{
+        border-radius: 50%;
+        width: 13rem;
+        height: 13rem;
+        margin: 1rem;
     }
     
     div.box-regras{
         width: 250px;
-        height: 250px;
+        height: 270px;
         transition: 0.6s ease;
         opacity: 0;
         margin-top: -0.9rem;
@@ -396,6 +407,7 @@ p.resultado{
     
     span.negrito{
         border-bottom: 2px solid #a258e0e6;
+        font-weight: bold;
     }
 
     button.botao-comecar{  
