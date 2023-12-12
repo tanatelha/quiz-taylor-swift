@@ -109,6 +109,44 @@ botaoComecar.addEventListener('click', function() {
 });
 
 
+// Colocar o timer
+let timer; // Variável para armazenar o timer
+let tempoRestante = 16; // Tempo inicial do timer
+
+// Para adicionar o tempo na div e aparecer para o usuário
+function exibirTempoRestante() {
+  document.querySelector(".timer-conteudo-fluido").innerText = `${tempoRestante} seg`;
+
+}
+
+
+// Função que faz o timer rodar
+function iniciarTimer() {
+  // A função setInterval é usada para executar uma determinada função em intervalos regulares de tempo
+  timer = setInterval(() => {
+    if (tempoRestante > 0){
+      tempoRestante--; // tira 1 do tempo
+      exibirTempoRestante(); // Muda no html o valor de tempo para o usuário
+    }
+      else {
+        // se o tempo acabar e a pessoa não responder, acaba o jogo
+        paginaFinal.style.opacity = "1";
+        boxPergunta.style.opacity = "0";
+        boxJustificativa.style.opacity = "0";
+        paginaFinalTitulo.innerHTML = "O tempo acabou..."
+        paginaFinalTexto.innerHTML = "E você não terminou de responder a pergunta. Com isso, podemos concluir que você é cambista"
+      }
+    
+  }, 1000); // intervalo para o timer rodar (= 1 segundo)
+}
+
+// Reseta o timer para as próximas perguntas
+function resetarTimer() {
+  clearInterval(timer); // Limpa o timer atual, se existir
+  tempoRestante = 15; // Reseta o tempo para 15 segundos
+  exibirTempoRestante(); // Atualiza o display do timer
+  iniciarTimer(); // Inicia o timer novamente
+}
 
 
 
@@ -155,46 +193,6 @@ botaoBoraLa.addEventListener("click", function () {
   // Começa a calcular o timer
   iniciarTimer();
 });
-
-
-// Colocar o timer
-let timer; // Variável para armazenar o timer
-let tempoRestante = 16; // Tempo inicial do timer
-
-// Para adicionar o tempo na div e aparecer para o usuário
-function exibirTempoRestante() {
-  document.querySelector(".timer-conteudo-fluido").innerText = `${tempoRestante} seg`;
-
-}
-
-
-// Função que faz o timer rodar
-function iniciarTimer() {
-  // A função setInterval é usada para executar uma determinada função em intervalos regulares de tempo
-  timer = setInterval(() => {
-    if (tempoRestante > 0){
-      tempoRestante--; // tira 1 do tempo
-      exibirTempoRestante(); // Muda no html o valor de tempo para o usuário
-    }
-      else {
-        // se o tempo acabar e a pessoa não responder, acaba o jogo
-        paginaFinal.style.opacity = "1";
-        boxPergunta.style.opacity = "0";
-        boxJustificativa.style.opacity = "0";
-        paginaFinalTitulo.innerHTML = "O tempo acabou..."
-        paginaFinalTexto.innerHTML = "E você não terminou de responder a pergunta. Com isso, podemos concluir que você é cambista"
-      }
-    
-  }, 1000); // intervalo para o timer rodar (= 1 segundo)
-}
-
-// Reseta o timer para as próximas perguntas
-function resetarTimer() {
-  clearInterval(timer); // Limpa o timer atual, se existir
-  tempoRestante = 15; // Reseta o tempo para 15 segundos
-  exibirTempoRestante(); // Atualiza o display do timer
-  iniciarTimer(); // Inicia o timer novamente
-}
 
 
 
