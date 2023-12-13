@@ -10,7 +10,6 @@ let opcao2 = document.querySelector("#opcao-2");
 let opcao3 = document.querySelector("#opcao-3");
 let resultado = document.querySelector(".resultado");
 let justificativa = document.querySelector(".texto-justificativa");
-
 let botoesRespostas = document.querySelectorAll(".resposta"); // botões de respostas das perguntas
 
 
