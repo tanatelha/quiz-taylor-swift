@@ -407,7 +407,7 @@ function acao() {
 
   // aparece boz de resultado
   paginaFinal.style.opacity = "1";
-  paginaFinalTitulo.innerHTML = "SAIU DA PÁGINA? FAKE SWITTER";
+  paginaFinalTitulo.innerHTML = "SAIU DA PÁGINA? FAKE SWIFTER";
   paginaFinalTexto.innerHTML = "Você infringiu a regra do jogo. Por isso, foi classificado como <span class='negrito'>cambista</span>";
   elementoImagem.src = "imagens/imagem_youre_cambista.png";
 }
